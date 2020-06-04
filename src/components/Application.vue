@@ -10,12 +10,12 @@
       <GmapMarker
         :key="index"
         v-for="(m, index) in markers"
-        :position="m.position"
+        :position="m.data.position"
         :clickable="true"
         :draggable="false"
-        @click="center = m.position"
+        @click="center = m.data.position"
         :icon="m.icon"
-        :title="m.userName"
+        :title="m.data.userName"
       />
     </GmapMap>
 
