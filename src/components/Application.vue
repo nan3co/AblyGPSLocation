@@ -2,7 +2,7 @@
   <div id="app">
     <GmapMap
       :center="{ lat: initialPosition.lat, lng: initialPosition.lng }"
-      :zoom="10"
+      :zoom="16"
       map-type-id="terrain"
       style="width: 100%; height: 90%"
     >
@@ -76,14 +76,16 @@ export default {
       channel.presence.get(function(err, members) {
         console.log(members)
         self.markers = members.map(mem => {
+          console.log(mem.data)
+          var data = mem.data
           if (JSON.stringify(self.userlocation) == JSON.stringify(mem.data)) {
             return {
-              mem,
+              data,
               icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
             };
           } else {
             return {
-              mem,
+              data,
               //...mem.data,
               icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
             };
